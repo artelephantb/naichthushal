@@ -30,6 +30,12 @@ func _process(delta: float) -> void:
 	if $TileMapLayer.material.get('shader_parameter/blackout') < 1:
 		$TileMapLayer.material.set('shader_parameter/blackout', $TileMapLayer.material.get('shader_parameter/blackout') + 0.01)
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_CRASH:
+		print('Crashed')
+	elif what == NOTIFICATION_WM_CLOSE_REQUEST:
+		print('Closed')
+
 func _on_world_import(path: Array) -> void:
 	var file = FileAccess.open(path[0], FileAccess.READ)
 	var content = file.get_as_text()

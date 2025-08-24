@@ -150,7 +150,7 @@ offset_left = 710.0
 offset_top = 614.0
 offset_right = 1141.0
 offset_bottom = 637.0
-text = "BUILD 19.8.25"
+text = "BUILD 24.8.25"
 label_settings = SubResource("LabelSettings_7r4gi")
 horizontal_alignment = 2
 
