@@ -25,6 +25,8 @@ func _ready() -> void:
 	$TileMapLayer.material.set('shader_parameter/blackout', 0)
 
 func _process(delta: float) -> void:
+	if not $AudioStreamPlayer.playing and randi_range(0, 10000) == 0:
+		$AudioStreamPlayer.play(0)
 	if $TileMapLayer.material.get('shader_parameter/blackout') < 1:
 		$TileMapLayer.material.set('shader_parameter/blackout', $TileMapLayer.material.get('shader_parameter/blackout') + 0.01)
 

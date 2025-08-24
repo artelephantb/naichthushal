@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c6eu7tlmewujv"]
+
+[ext_resource type="FontFile" uid="uid://53ssaml16qni" path="res://fonts/raster_forge_font.ttf" id="1_57o3v"]
+
+[resource]
+default_font = ExtResource("1_57o3v")

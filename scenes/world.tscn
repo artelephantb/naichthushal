@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=4 uid="uid://bnwiqiqd7oa4x"]
+[gd_scene load_steps=15 format=4 uid="uid://bnwiqiqd7oa4x"]
 
 [ext_resource type="Script" uid="uid://7eqtwf8mgdna" path="res://scripts/world.gd" id="1_71j4m"]
 [ext_resource type="Shader" uid="uid://comsfopwx1suj" path="res://shaders/world_reveal.gdshader" id="1_k0juu"]
 [ext_resource type="Texture2D" uid="uid://cwlfax5vlwjji" path="res://assets/textures/blocks/tilesheet.png" id="2_k0juu"]
 [ext_resource type="PackedScene" uid="uid://db5rfjktal5y4" path="res://scenes/player.tscn" id="3_71j4m"]
+[ext_resource type="Theme" uid="uid://c6eu7tlmewujv" path="res://themes/menus.tres" id="5_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cb4l7jnphi0b1" path="res://scenes/block_selection.tscn" id="5_71j4m"]
+[ext_resource type="FontFile" uid="uid://53ssaml16qni" path="res://fonts/raster_forge_font.ttf" id="5_i7141"]
+[ext_resource type="AudioStream" uid="uid://oy3xrqb0sfgj" path="res://songs/project_3.wav" id="8_4mrxx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qfnet"]
 shader = ExtResource("1_k0juu")
@@ -40,6 +43,12 @@ custom_data_layer_1/type = 2
 sources/0 = SubResource("TileSetAtlasSource_lbhrr")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7r4gi"]
+font = ExtResource("5_i7141")
+
+[sub_resource type="LabelSettings" id="LabelSettings_w7kh3"]
+font = ExtResource("5_i7141")
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_71j4m")
@@ -87,43 +96,53 @@ offset_bottom = 45.0
 
 [node name="Grass" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_4mrxx")
 action_mode = 0
 text = "Grass"
 
 [node name="Dirt" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_4mrxx")
 text = "Dirt"
 
 [node name="Cobble" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_4mrxx")
 text = "Cobble"
 
 [node name="Sand" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_4mrxx")
 text = "Sand"
 
 [node name="Ice" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_4mrxx")
 text = "Ice/Cloud"
 
 [node name="Barrier" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_4mrxx")
 text = "Barrier"
 
 [node name="Flight" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_4mrxx")
 text = "Toggle Flight"
 
 [node name="Instabreak" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_4mrxx")
 text = "Instabreak"
 
 [node name="Export" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_4mrxx")
 text = "Export"
 
 [node name="Import" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
+theme = ExtResource("5_4mrxx")
 text = "Import World"
 
 [node name="Info" type="Label" parent="CanvasLayer"]
@@ -132,6 +151,7 @@ offset_top = 614.0
 offset_right = 1141.0
 offset_bottom = 637.0
 text = "BUILD 19.8.25"
+label_settings = SubResource("LabelSettings_7r4gi")
 horizontal_alignment = 2
 
 [node name="BreakTime" type="Label" parent="CanvasLayer"]
@@ -140,8 +160,12 @@ offset_top = 51.0
 offset_right = 310.0
 offset_bottom = 74.0
 text = "(debug) BREAK TIME GOES HERE DONT TOUCH!"
+label_settings = SubResource("LabelSettings_w7kh3")
 
 [node name="BlockSelection" parent="." instance=ExtResource("5_71j4m")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_4mrxx")
 
 [connection signal="file_selected" from="ExportPopup" to="Player" method="_on_export_popup_file_selected"]
 [connection signal="file_selected" from="ImportPopup" to="Player" method="_on_import_popup_file_selected"]
