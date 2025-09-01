@@ -1,11 +1,23 @@
 extends Node2D
 
-@onready var tilemap = $'../TileMapLayer'
+@export var scale_animation: float = 1.2
 
-# Called when the node enters the scene tree for the first time.
+@export var tilemap: TileMapLayer
+
+var last_pos = Vector2i(0, 0)
+
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	position = tilemap.local_to_map(get_global_mouse_position()) * 16 + Vector2i(8, 8)
+	var latest_pos = tilemap.local_to_map(get_global_mouse_position()) * 16 + Vector2i(8, 8)
+	if last_pos == latest_pos:
+		if scale > Vector2(1, 1):
+			scale.x -= 0.1
+			scale.y -= 0.1
+	else:
+		last_pos = latest_pos
+		position = latest_pos
+
+		scale.x = scale_animation
+		scale.y = scale_animation

@@ -7,7 +7,7 @@
 [ext_resource type="Theme" uid="uid://c6eu7tlmewujv" path="res://themes/menus.tres" id="5_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cb4l7jnphi0b1" path="res://scenes/block_selection.tscn" id="5_71j4m"]
 [ext_resource type="FontFile" uid="uid://53ssaml16qni" path="res://fonts/raster_forge_font.ttf" id="5_i7141"]
-[ext_resource type="AudioStream" uid="uid://oy3xrqb0sfgj" path="res://songs/project_3.wav" id="8_4mrxx"]
+[ext_resource type="AudioStream" uid="uid://c0bratrdhfm8x" path="res://songs/project_4.wav" id="8_4mrxx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qfnet"]
 shader = ExtResource("1_k0juu")
@@ -172,7 +172,8 @@ offset_bottom = 74.0
 text = "(debug) BREAK TIME GOES HERE DONT TOUCH!"
 label_settings = SubResource("LabelSettings_w7kh3")
 
-[node name="BlockSelection" parent="." instance=ExtResource("5_71j4m")]
+[node name="BlockSelection" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("5_71j4m")]
+tilemap = NodePath("../TileMapLayer")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_4mrxx")
