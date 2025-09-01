@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 			else:
 				break_timer -= 1.0
 	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
-		if position.x + 16 < safe_area.x or position.x > safe_area.z or position.y + 16 < safe_area.y or position.y > safe_area.w:
+		if tilemap.get_cell_tile_data(tile_pos) == null and (position.x + 16 < safe_area.x or position.x > safe_area.z or position.y + 16 < safe_area.y or position.y > safe_area.w):
 			tilemap.set_cell(tile_pos, 0, Vector2(1, 0))
 	else:
 		break_timer = -1.0
