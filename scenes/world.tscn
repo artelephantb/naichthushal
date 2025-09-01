@@ -169,7 +169,7 @@ offset_left = 12.0
 offset_top = 51.0
 offset_right = 310.0
 offset_bottom = 74.0
-text = "(debug) BREAK TIME GOES HERE DONT TOUCH!"
+text = "(break timer)"
 label_settings = SubResource("LabelSettings_w7kh3")
 
 [node name="BlockSelection" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("5_71j4m")]

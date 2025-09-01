@@ -68,24 +68,8 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	if instabreak == true:
-		break_time = 0
-	var tile_pos = tilemap.local_to_map(get_global_mouse_position())
-	if last_cursor_frame != tile_pos:
-		last_cursor_frame = tile_pos
-		break_time = -1
-	$"../CanvasLayer/BreakTime".text = str(break_time)
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-		if break_time == -1:
-			if tilemap.get_cell_tile_data(tile_pos) != null:
-				break_time = tilemap.get_cell_tile_data(tile_pos).get_custom_data('BreakTime')
-		if break_time == 0:
-			tilemap.erase_cell(tile_pos)
-			break_time = -1
-		elif break_time != -1:
-			break_time -= 1
-	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT): 
-		tile_pos = tilemap.local_to_map(get_global_mouse_position())
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT): 
+		var tile_pos = tilemap.local_to_map(get_global_mouse_position())
 		if abs(position.x - get_global_mouse_position().x) + abs(position.y - get_global_mouse_position().y) > 30:
 			tilemap.set_cell(tile_pos, 0, Vector2(selection, 0))
 	else:
@@ -138,3 +122,4 @@ func _on_barrier_pressed() -> void:
 
 func _on_instabreak_pressed() -> void:
 	instabreak = true
+	$'../BlockSelection'.break_modifier = 0.0
