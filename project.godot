@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Naichthushal"
 config/description="Naichthushal is a game similar to a popular voxel game, but with a single vertical slice. Build, create, and share creations from your worlds!"
-config/version="19.8.25"
+config/version="1.9.25"
 run/main_scene="uid://bnwiqiqd7oa4x"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="uid://ciyhnhtvsqcew"

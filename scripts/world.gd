@@ -25,6 +25,10 @@ func _ready() -> void:
 	$TileMapLayer.material.set('shader_parameter/blackout', 0)
 
 func _process(delta: float) -> void:
+	$BlockSelection.safe_area.x = $Player.position.x
+	$BlockSelection.safe_area.y = $Player.position.y
+	$BlockSelection.safe_area.z = $Player.position.x + 16
+	$BlockSelection.safe_area.w = $Player.position.y + 16
 	$"CanvasLayer/BreakTime".text = str($BlockSelection.break_timer)
 
 	if not $AudioStreamPlayer.playing and randi_range(0, 50000) == 0:

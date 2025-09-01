@@ -68,12 +68,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	if Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT): 
-		var tile_pos = tilemap.local_to_map(get_global_mouse_position())
-		if abs(position.x - get_global_mouse_position().x) + abs(position.y - get_global_mouse_position().y) > 30:
-			tilemap.set_cell(tile_pos, 0, Vector2(selection, 0))
-	else:
-		break_time = -1
+	pass
 
 func _on_grass_pressed() -> void:
 	selection = 0
