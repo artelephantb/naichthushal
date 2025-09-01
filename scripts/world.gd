@@ -2,6 +2,9 @@ extends Node
 
 const BLOCKS = [{'title':'Test', 'name':'test', 'texture':Vector2i(0, 0), 'break_time':10}]
 
+const PROJECT_3 = preload('res://songs/project_3.wav')
+const PROJECT_4 = preload('res://songs/project_4.wav')
+
 @onready var tile_layer = $TileMapLayer
 
 func etch_block(name: String, title: String, texture: Vector2i, break_time: float):
@@ -22,7 +25,7 @@ func set_block_tiles(blocks: Array):
 func _ready() -> void:
 	get_window().files_dropped.connect(_on_world_import)
 	#set_block_tiles(['res://assets/textures/blocks/cobble.png', 'res://assets/textures/blocks/grass.png', 'res://assets/textures/blocks/sand.png'])
-	$TileMapLayer.material.set('shader_parameter/blackout', 0)
+	#$TileMapLayer.material.set('shader_parameter/blackout', 0)
 
 func _process(delta: float) -> void:
 	$BlockSelection.safe_area.x = $Player.position.x
@@ -31,10 +34,14 @@ func _process(delta: float) -> void:
 	$BlockSelection.safe_area.w = $Player.position.y + 16
 	$"CanvasLayer/BreakTime".text = str($BlockSelection.break_timer)
 
-	if not $AudioStreamPlayer.playing and randi_range(0, 50000) == 0:
-		$AudioStreamPlayer.play(0)
-	if $TileMapLayer.material.get('shader_parameter/blackout') < 1:
-		$TileMapLayer.material.set('shader_parameter/blackout', $TileMapLayer.material.get('shader_parameter/blackout') + 0.01)
+	if not $AmbianceMusic.playing and randi_range(0, 1) == 0:
+		if randi_range(0, 1) == 0:
+			$AmbianceMusic.stream = PROJECT_3
+		else:
+			$AmbianceMusic.stream = PROJECT_4
+		$AmbianceMusic.play(0)
+	#if $TileMapLayer.material.get('shader_parameter/blackout') < 1:
+	#	$TileMapLayer.material.set('shader_parameter/blackout', $TileMapLayer.material.get('shader_parameter/blackout') + 0.01)
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_CRASH:
