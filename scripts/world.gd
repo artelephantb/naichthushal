@@ -7,6 +7,8 @@ const PROJECT_4 = preload('res://songs/project_4.wav')
 
 @onready var tile_layer = $TileMapLayer
 
+var play_ambiant_music = true
+
 func etch_block(name: String, title: String, texture: Vector2i, break_time: float):
 	BLOCKS.append({'name':name, 'title':title, 'texture':texture, 'break_time':break_time})
 
@@ -34,7 +36,7 @@ func _process(delta: float) -> void:
 	$BlockSelection.safe_area.w = $Player.position.y + 16
 	$"CanvasLayer/BreakTime".text = str($BlockSelection.break_timer)
 
-	if not $AmbianceMusic.playing and randi_range(0, 1) == 0:
+	if play_ambiant_music and not $AmbianceMusic.playing and randi_range(0, 50000) == 0:
 		if randi_range(0, 1) == 0:
 			$AmbianceMusic.stream = PROJECT_3
 		else:
