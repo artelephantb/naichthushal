@@ -6,11 +6,13 @@ extends Node2D
 
 @export var scale_animation: float = 1.2
 
+@onready var break_stages = $'AnimatedSprite2D'
+
 var last_pos = Vector2(0, 0)
 var break_timer = 0.0
 
 func _ready() -> void:
-	pass
+	break_stages.hide()
 
 func _process(delta: float) -> void:
 	var tile_pos = tilemap.local_to_map(get_global_mouse_position())
@@ -21,16 +23,23 @@ func _process(delta: float) -> void:
 		if tilemap.get_cell_tile_data(tile_pos) != null:
 			if break_timer == -1.0:
 				break_timer = tilemap.get_cell_tile_data(tile_pos).get_custom_data('BreakTime') * break_modifier
+				break_stages.frame = 0
+				print(break_timer / 10)
+				break_stages.speed_scale = break_timer / 10
+				break_stages.play('default')
+				break_stages.show()
 			elif break_timer == 0.0:
 				break_timer = -1.0
 				tilemap.erase_cell(tile_pos)
+				break_stages.hide()
 			else:
 				break_timer -= 1.0
 	elif Input.is_mouse_button_pressed(MOUSE_BUTTON_RIGHT):
 		if tilemap.get_cell_tile_data(tile_pos) == null and (position.x + 16 < safe_area.x or position.x > safe_area.z or position.y + 16 < safe_area.y or position.y > safe_area.w):
 			tilemap.set_cell(tile_pos, 0, Vector2(1, 0))
-	else:
+	elif Input.is_action_just_released('left_click'):
 		break_timer = -1.0
+		break_stages.hide()
 
 	# Detect mouse movement
 	if last_pos == position:
