@@ -24,7 +24,6 @@ func _process(delta: float) -> void:
 			if break_timer == -1.0:
 				break_timer = tilemap.get_cell_tile_data(tile_pos).get_custom_data('BreakTime') * break_modifier
 				break_stages.frame = 0
-				print(break_timer / 10)
 				break_stages.speed_scale = break_timer / 10
 				break_stages.play('default')
 				break_stages.show()
