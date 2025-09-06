@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	pass
+	$'../BlockSelection'.selected_block = selection
 
 func _on_grass_pressed() -> void:
 	selection = 0
