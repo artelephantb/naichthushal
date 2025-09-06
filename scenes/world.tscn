@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bnwiqiqd7oa4x"]
+[gd_scene load_steps=11 format=4 uid="uid://bnwiqiqd7oa4x"]
 
 [ext_resource type="Script" uid="uid://7eqtwf8mgdna" path="res://scripts/world.gd" id="1_71j4m"]
 [ext_resource type="Texture2D" uid="uid://cwlfax5vlwjji" path="res://assets/textures/blocks/tilesheet.png" id="2_k0juu"]
@@ -52,9 +52,6 @@ sources/0 = SubResource("TileSetAtlasSource_lbhrr")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yqjtg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7r4gi"]
-font = ExtResource("5_i7141")
-
-[sub_resource type="LabelSettings" id="LabelSettings_w7kh3"]
 font = ExtResource("5_i7141")
 
 [node name="World" type="Node2D"]
@@ -159,14 +156,6 @@ offset_bottom = 637.0
 text = "BUILD 6.9.25"
 label_settings = SubResource("LabelSettings_7r4gi")
 horizontal_alignment = 2
-
-[node name="BreakTime" type="Label" parent="CanvasLayer"]
-offset_left = 12.0
-offset_top = 51.0
-offset_right = 310.0
-offset_bottom = 74.0
-text = "(break timer)"
-label_settings = SubResource("LabelSettings_w7kh3")
 
 [node name="BlockSelection" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("5_71j4m")]
 tilemap = NodePath("../TileMapLayer")

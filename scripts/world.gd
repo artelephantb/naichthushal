@@ -34,7 +34,6 @@ func _process(delta: float) -> void:
 	$BlockSelection.safe_area.y = $Player.position.y
 	$BlockSelection.safe_area.z = $Player.position.x + 16
 	$BlockSelection.safe_area.w = $Player.position.y + 16
-	$"CanvasLayer/BreakTime".text = str($BlockSelection.break_timer)
 
 	if play_ambiant_music and not $AmbianceMusic.playing and randi_range(0, 50000) == 0:
 		if randi_range(0, 1) == 0:
