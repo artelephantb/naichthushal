@@ -37,6 +37,7 @@ texture = ExtResource("2_k0juu")
 8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 8:0/0/custom_data_1 = 75
 9:0/0 = 0
+9:0/0/custom_data_1 = 1
 10:0/0 = 0
 11:0/0 = 0
 
@@ -155,7 +156,7 @@ offset_left = 710.0
 offset_top = 614.0
 offset_right = 1141.0
 offset_bottom = 637.0
-text = "BUILD 1.9.25"
+text = "BUILD 6.9.25"
 label_settings = SubResource("LabelSettings_7r4gi")
 horizontal_alignment = 2
 
