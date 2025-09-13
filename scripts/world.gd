@@ -25,6 +25,7 @@ func set_block_tiles(blocks: Array):
 	tile_layer.tile_set = tile_set
 
 func _ready() -> void:
+	get_tree().set_auto_accept_quit(false)
 	get_window().files_dropped.connect(_on_world_import)
 	#set_block_tiles(['res://assets/textures/blocks/cobble.png', 'res://assets/textures/blocks/grass.png', 'res://assets/textures/blocks/sand.png'])
 	#$TileMapLayer.material.set('shader_parameter/blackout', 0)
@@ -48,7 +49,7 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_CRASH:
 		print('Crashed')
 	elif what == NOTIFICATION_WM_CLOSE_REQUEST:
-		print('Closed')
+		$'ExitConfirmation'.popup_centered()
 
 func _on_world_import(path: Array) -> void:
 	var file = FileAccess.open(path[0], FileAccess.READ)
@@ -59,3 +60,6 @@ func _on_world_import(path: Array) -> void:
 	else:
 		printerr('Invalid world')
 		tile_layer.tile_map_data = []
+
+func _on_exit_confirmation_confirmed() -> void:
+	get_tree().quit()
