@@ -44,7 +44,6 @@ func _process(delta: float) -> void:
 		scale.y = scale_animation
 
 func place_block(tile_pos: Vector2, block: int, replace: bool = false):
-	## Places a block at a location with a block type
 	if not replace and tilemap.get_cell_tile_data(tile_pos) != null:
 		return
 
@@ -52,7 +51,6 @@ func place_block(tile_pos: Vector2, block: int, replace: bool = false):
 			tilemap.set_cell(tile_pos, 0, Vector2(block, 0))
 
 func break_block(tile_pos: Vector2, instant: bool = false):
-	## Breaks a block at a location
 	if tilemap.get_cell_tile_data(tile_pos) == null:
 		return
 

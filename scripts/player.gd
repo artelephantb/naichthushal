@@ -1,17 +1,14 @@
 extends CharacterBody2D
 
+@export var speed = 130.0
+@export var jump_velocity = -300.0
 
-const SPEED = 130.0
-const JUMP_VELOCITY = -300.0
+@export var selection = 0
+@export var flight = false
 
 @onready var animation = $AnimatedSprite2D
 @onready var world = $".."
 @onready var tilemap = $"../TileMapLayer"
-
-var selection = 0
-var break_time = -1
-var flight = false
-var instabreak = false
 
 var last_cursor_frame = Vector2i(0, 0)
 
@@ -38,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_pressed('player_jump'):
 		if is_on_floor() or flight:
-			velocity.y = JUMP_VELOCITY
+			velocity.y = jump_velocity
 
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis('player_left', 'player_right')
@@ -61,23 +58,23 @@ func _physics_process(delta: float) -> void:
 		animation.play('jump')
 
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
 
 func _process(delta: float) -> void:
-	$'../BlockSelection'.selected_block = selection
+	pass
 
 func _on_grass_pressed() -> void:
-	selection = 0
+	$'../BlockSelection'.selected_block = 0
 
 func _on_cobble_pressed() -> void:
-	selection = 2
+	$'../BlockSelection'.selected_block = 2
 
 func _on_sand_pressed() -> void:
-	selection = 3
+	$'../BlockSelection'.selected_block = 3
 
 func _on_import_pressed() -> void:
 	$"../ImportPopup".popup()
@@ -101,7 +98,7 @@ func _on_export_popup_file_selected(path: String) -> void:
 	file.store_string(str(tilemap.tile_map_data))
 
 func _on_dirt_pressed() -> void:
-	selection = 1
+	$'../BlockSelection'.selected_block = 1
 
 func _on_flight_pressed() -> void:
 	if flight:
@@ -110,11 +107,10 @@ func _on_flight_pressed() -> void:
 		flight = true
 
 func _on_ice_pressed() -> void:
-	selection = 4
+	$'../BlockSelection'.selected_block = 4
 
 func _on_barrier_pressed() -> void:
-	selection = 5
+	$'../BlockSelection'.selected_block = 5
 
 func _on_instabreak_pressed() -> void:
-	instabreak = true
 	$'../BlockSelection'.break_modifier = 0.0

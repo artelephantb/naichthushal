@@ -87,7 +87,7 @@ animations = [{
 script = ExtResource("1_10ekq")
 
 [node name="BreakStages" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.501961)
+modulate = Color(1, 1, 1, 0.490196)
 texture = ExtResource("2_6af8i")
 region_rect = Rect2(1, 3, 1, 1)
 
