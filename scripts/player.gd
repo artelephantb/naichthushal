@@ -12,7 +12,7 @@ extends CharacterBody2D
 
 var last_cursor_frame = Vector2i(0, 0)
 
-func _ready() -> void:
+func _ready() -> void: 
 	var gradient_colors = {
 		0.2: Color(0.4, 0.4, 0.4) * Color(randf(), randf(), randf()),
 		1: Color(1, 1, 1)
@@ -91,11 +91,11 @@ func _on_import_popup_file_selected(path: String) -> void:
 
 func _on_export_pressed() -> void:
 	get_viewport().gui_get_focus_owner().release_focus()
-	$"../ExportPopup".popup()
+	DirAccess.make_dir_absolute(ProjectSettings.globalize_path('user://maps'))
+	$"../SaveMapPopup".popup_centered()
 
 func _on_export_popup_file_selected(path: String) -> void:
-	var file = FileAccess.open(path, FileAccess.WRITE)
-	file.store_string(str(tilemap.tile_map_data))
+	pass
 
 func _on_dirt_pressed() -> void:
 	$'../BlockSelection'.selected_block = 1

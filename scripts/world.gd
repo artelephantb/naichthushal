@@ -63,3 +63,16 @@ func _on_world_import(path: Array) -> void:
 
 func _on_exit_confirmation_confirmed() -> void:
 	get_tree().quit()
+
+func _on_open_maps_pressed() -> void:
+	OS.shell_show_in_file_manager(ProjectSettings.globalize_path('user://maps'))
+
+func _on_save_map_cancel_pressed() -> void:
+	$'SaveMapPopup'.hide()
+
+func _on_save_map_save_pressed() -> void:
+	var file = FileAccess.open(ProjectSettings.globalize_path('user://maps/' + $'SaveMapPopup/CanvasLayer/Name'.text + '.mtw'), FileAccess.WRITE)
+	file.store_string(str(tile_layer.tile_map_data))
+
+func _on_save_map_popup_close_requested() -> void:
+	$'SaveMapPopup'.hide()
