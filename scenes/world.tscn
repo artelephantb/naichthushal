@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=4 uid="uid://bnwiqiqd7oa4x"]
+[gd_scene load_steps=13 format=4 uid="uid://bnwiqiqd7oa4x"]
 
 [ext_resource type="Script" uid="uid://7eqtwf8mgdna" path="res://scripts/world.gd" id="1_71j4m"]
+[ext_resource type="PackedScene" uid="uid://dxqfuqcy7hbtm" path="res://scenes/popups/save_popup.tscn" id="2_4mrxx"]
 [ext_resource type="Texture2D" uid="uid://cwlfax5vlwjji" path="res://assets/textures/blocks/tilesheet.png" id="2_k0juu"]
 [ext_resource type="PackedScene" uid="uid://db5rfjktal5y4" path="res://scenes/player.tscn" id="3_71j4m"]
 [ext_resource type="Theme" uid="uid://c6eu7tlmewujv" path="res://themes/menus.tres" id="5_4mrxx"]
@@ -81,20 +82,24 @@ root_subfolder = "/"
 filters = PackedStringArray("*.mtworld")
 use_native_dialog = true
 
-[node name="SaveMapPopup" type="Window" parent="."]
+[node name="SaveMapPopup" parent="." instance=ExtResource("2_4mrxx")]
 title = "Save Map"
-position = Vector2i(0, 36)
-size = Vector2i(300, 150)
-visible = false
-wrap_controls = true
-unresizable = true
-always_on_top = true
-popup_window = true
 force_native = true
 
-[node name="CanvasLayer" type="CanvasLayer" parent="SaveMapPopup"]
+[node name="SaveMapPopupA" type="Popup" parent="."]
+title = "Save Map"
+size = Vector2i(300, 100)
+borderless = false
+force_native = true
 
-[node name="Name" type="TextEdit" parent="SaveMapPopup/CanvasLayer"]
+[node name="CanvasLayer" type="CanvasLayer" parent="SaveMapPopupA"]
+
+[node name="ColorRect" type="ColorRect" parent="SaveMapPopupA/CanvasLayer"]
+offset_right = 300.0
+offset_bottom = 150.0
+color = Color(0.25098, 0.25098, 0.25098, 1)
+
+[node name="Name" type="TextEdit" parent="SaveMapPopupA/CanvasLayer"]
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 290.0
@@ -103,18 +108,18 @@ tooltip_text = "Map Name"
 placeholder_text = "Hello"
 context_menu_enabled = false
 
-[node name="Cancel" type="Button" parent="SaveMapPopup/CanvasLayer"]
+[node name="Cancel" type="Button" parent="SaveMapPopupA/CanvasLayer"]
 offset_left = 10.0
-offset_top = 48.0
+offset_top = 54.0
 offset_right = 70.0
-offset_bottom = 79.0
+offset_bottom = 85.0
 text = "Cancel"
 
-[node name="Save" type="Button" parent="SaveMapPopup/CanvasLayer"]
-offset_left = 124.0
-offset_top = 50.0
-offset_right = 168.0
-offset_bottom = 81.0
+[node name="Save" type="Button" parent="SaveMapPopupA/CanvasLayer"]
+offset_left = 246.0
+offset_top = 54.0
+offset_right = 290.0
+offset_bottom = 85.0
 text = "Save"
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
@@ -212,7 +217,7 @@ offset_left = 20.0
 offset_top = 579.0
 offset_right = 118.0
 offset_bottom = 619.0
-slots = Array[String](["Slot 1", "Slot 2", "Slot 3"])
+slots = Array[int]([2, 5, 6, 3])
 
 [node name="BlockSelection" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("5_71j4m")]
 tilemap = NodePath("../TileMapLayer")
@@ -223,9 +228,12 @@ safe_area = Vector4(4.3, 3.59, 4.99, 1.16)
 [connection signal="confirmed" from="ExitConfirmation" to="." method="_on_exit_confirmation_confirmed"]
 [connection signal="file_selected" from="ExportPopup" to="Player" method="_on_export_popup_file_selected"]
 [connection signal="file_selected" from="ImportPopup" to="Player" method="_on_import_popup_file_selected"]
+[connection signal="cancel_pressed" from="SaveMapPopup" to="." method="_on_save_map_popup_cancel_pressed"]
 [connection signal="close_requested" from="SaveMapPopup" to="." method="_on_save_map_popup_close_requested"]
-[connection signal="pressed" from="SaveMapPopup/CanvasLayer/Cancel" to="." method="_on_save_map_cancel_pressed"]
-[connection signal="pressed" from="SaveMapPopup/CanvasLayer/Save" to="." method="_on_save_map_save_pressed"]
+[connection signal="save_pressed" from="SaveMapPopup" to="." method="_on_save_map_popup_save_pressed"]
+[connection signal="close_requested" from="SaveMapPopupA" to="." method="_on_save_map_popup_close_requested"]
+[connection signal="pressed" from="SaveMapPopupA/CanvasLayer/Cancel" to="." method="_on_save_map_cancel_pressed"]
+[connection signal="pressed" from="SaveMapPopupA/CanvasLayer/Save" to="." method="_on_save_map_save_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Grass" to="Player" method="_on_grass_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Dirt" to="Player" method="_on_dirt_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Cobble" to="Player" method="_on_cobble_pressed"]

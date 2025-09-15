@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxqfuqcy7hbtm"]
+
+[ext_resource type="Script" uid="uid://cernayslastnl" path="res://scenes/popups/save_popup.gd" id="1_5y3ci"]
+
+[node name="SavePopup" type="Popup"]
+size = Vector2i(290, 100)
+visible = true
+borderless = false
+script = ExtResource("1_5y3ci")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 300.0
+offset_bottom = 150.0
+
+[node name="NameInput" type="TextEdit" parent="."]
+offset_left = 5.0
+offset_top = 13.0
+offset_right = 285.0
+offset_bottom = 48.0
+tooltip_text = "Map Name"
+placeholder_text = "Map name"
+context_menu_enabled = false
+
+[node name="CancelButton" type="Button" parent="."]
+offset_left = 88.0
+offset_top = 56.0
+offset_right = 148.0
+offset_bottom = 87.0
+text = "Cancel"
+
+[node name="SaveButton" type="Button" parent="."]
+offset_left = 154.0
+offset_top = 56.0
+offset_right = 198.0
+offset_bottom = 87.0
+text = "Save"
+
+[connection signal="pressed" from="CancelButton" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_pressed"]
