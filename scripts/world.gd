@@ -31,6 +31,7 @@ func _ready() -> void:
 	#$TileMapLayer.material.set('shader_parameter/blackout', 0)
 
 func _process(delta: float) -> void:
+	$'BlockSelection'.selected_block = $'CanvasLayer/Inventory'.selected_item_index
 	$BlockSelection.safe_area.x = $Player.position.x
 	$BlockSelection.safe_area.y = $Player.position.y
 	$BlockSelection.safe_area.z = $Player.position.x + 16
