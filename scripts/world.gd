@@ -32,6 +32,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	$'BlockSelection'.selected_block = $'CanvasLayer/Inventory'.selected_item_index
+	tile_layer.get_cell_atlas_coords(Vector2(0, 0))
 	$BlockSelection.safe_area.x = $Player.position.x
 	$BlockSelection.safe_area.y = $Player.position.y
 	$BlockSelection.safe_area.z = $Player.position.x + 16
