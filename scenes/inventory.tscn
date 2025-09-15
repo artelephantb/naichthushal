@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6br1bwyouxgt"]
+
+[ext_resource type="Script" uid="uid://b8mgr0ops75tt" path="res://scripts/inventory.gd" id="1_hj2ta"]
+[ext_resource type="Texture2D" uid="uid://eqyr58wx03fh" path="res://assets/textures/blocks/menu.png" id="1_qw0r6"]
+
+[node name="Inventory" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_hj2ta")
+
+[node name="Menu" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = ExtResource("1_qw0r6")

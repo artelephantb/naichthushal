@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://bnwiqiqd7oa4x"]
+[gd_scene load_steps=12 format=4 uid="uid://bnwiqiqd7oa4x"]
 
 [ext_resource type="Script" uid="uid://7eqtwf8mgdna" path="res://scripts/world.gd" id="1_71j4m"]
 [ext_resource type="Texture2D" uid="uid://cwlfax5vlwjji" path="res://assets/textures/blocks/tilesheet.png" id="2_k0juu"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://c6eu7tlmewujv" path="res://themes/menus.tres" id="5_4mrxx"]
 [ext_resource type="PackedScene" uid="uid://cb4l7jnphi0b1" path="res://scenes/block_selection.tscn" id="5_71j4m"]
 [ext_resource type="FontFile" uid="uid://53ssaml16qni" path="res://fonts/raster_forge_font.ttf" id="5_i7141"]
+[ext_resource type="PackedScene" uid="uid://c6br1bwyouxgt" path="res://scenes/inventory.tscn" id="6_i7141"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lbhrr"]
 resource_name = "blocks"
@@ -205,6 +206,13 @@ offset_bottom = 637.0
 text = "BUILD 6.9.25"
 label_settings = SubResource("LabelSettings_7r4gi")
 horizontal_alignment = 2
+
+[node name="Inventory" parent="CanvasLayer" instance=ExtResource("6_i7141")]
+offset_left = 20.0
+offset_top = 579.0
+offset_right = 118.0
+offset_bottom = 619.0
+slots = Array[String](["Slot 1", "Slot 2", "Slot 3"])
 
 [node name="BlockSelection" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("5_71j4m")]
 tilemap = NodePath("../TileMapLayer")
