@@ -141,42 +141,66 @@ shape = SubResource("WorldBoundaryShape2D_yqjtg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+[node name="Grass" type="Button" parent="CanvasLayer"]
+visible = false
 offset_left = 12.0
-offset_top = 14.0
-offset_right = 181.0
-offset_bottom = 45.0
-
-[node name="Grass" type="Button" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
+offset_top = -42.0
+offset_right = 80.0
+offset_bottom = -11.0
 theme = ExtResource("5_4mrxx")
 action_mode = 0
 text = "Grass"
 
-[node name="Dirt" type="Button" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
+[node name="Dirt" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 84.0
+offset_top = -42.0
+offset_right = 132.0
+offset_bottom = -11.0
 theme = ExtResource("5_4mrxx")
 text = "Dirt"
 
-[node name="Cobble" type="Button" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
+[node name="Cobble" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 136.0
+offset_top = -42.0
+offset_right = 216.0
+offset_bottom = -11.0
 theme = ExtResource("5_4mrxx")
 text = "Cobble"
 
-[node name="Sand" type="Button" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
+[node name="Sand" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 220.0
+offset_top = -42.0
+offset_right = 278.0
+offset_bottom = -11.0
 theme = ExtResource("5_4mrxx")
 text = "Sand"
 
-[node name="Ice" type="Button" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
+[node name="Ice" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 282.0
+offset_top = -42.0
+offset_right = 390.0
+offset_bottom = -11.0
 theme = ExtResource("5_4mrxx")
 text = "Ice/Cloud"
 
-[node name="Barrier" type="Button" parent="CanvasLayer/HBoxContainer"]
-layout_mode = 2
+[node name="Barrier" type="Button" parent="CanvasLayer"]
+visible = false
+offset_left = 394.0
+offset_top = -42.0
+offset_right = 480.0
+offset_bottom = -11.0
 theme = ExtResource("5_4mrxx")
 text = "Barrier"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 15.0
+offset_top = 602.0
+offset_right = 719.0
+offset_bottom = 633.0
 
 [node name="Flight" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
@@ -214,9 +238,9 @@ horizontal_alignment = 2
 
 [node name="Inventory" parent="CanvasLayer" instance=ExtResource("6_i7141")]
 offset_left = 20.0
-offset_top = 579.0
+offset_top = 16.0
 offset_right = 118.0
-offset_bottom = 619.0
+offset_bottom = 56.0
 main_slots = Array[int]([0, 1, 2, 3, 4, 5, 6, 7, 8])
 
 [node name="BlockSelection" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("5_71j4m")]
@@ -234,12 +258,12 @@ safe_area = Vector4(4.3, 3.59, 4.99, 1.16)
 [connection signal="close_requested" from="SaveMapPopupA" to="." method="_on_save_map_popup_close_requested"]
 [connection signal="pressed" from="SaveMapPopupA/CanvasLayer/Cancel" to="." method="_on_save_map_cancel_pressed"]
 [connection signal="pressed" from="SaveMapPopupA/CanvasLayer/Save" to="." method="_on_save_map_save_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Grass" to="Player" method="_on_grass_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Dirt" to="Player" method="_on_dirt_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Cobble" to="Player" method="_on_cobble_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Sand" to="Player" method="_on_sand_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Ice" to="Player" method="_on_ice_pressed"]
-[connection signal="pressed" from="CanvasLayer/HBoxContainer/Barrier" to="Player" method="_on_barrier_pressed"]
+[connection signal="pressed" from="CanvasLayer/Grass" to="Player" method="_on_grass_pressed"]
+[connection signal="pressed" from="CanvasLayer/Dirt" to="Player" method="_on_dirt_pressed"]
+[connection signal="pressed" from="CanvasLayer/Cobble" to="Player" method="_on_cobble_pressed"]
+[connection signal="pressed" from="CanvasLayer/Sand" to="Player" method="_on_sand_pressed"]
+[connection signal="pressed" from="CanvasLayer/Ice" to="Player" method="_on_ice_pressed"]
+[connection signal="pressed" from="CanvasLayer/Barrier" to="Player" method="_on_barrier_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Flight" to="Player" method="_on_flight_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Instabreak" to="Player" method="_on_instabreak_pressed"]
 [connection signal="pressed" from="CanvasLayer/HBoxContainer/Export" to="Player" method="_on_export_pressed"]
