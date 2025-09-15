@@ -21,6 +21,10 @@ config/icon="uid://ciyhnhtvsqcew"
 
 window/stretch/mode="canvas_items"
 
+[gui]
+
+theme/custom="uid://csnrtywni614f"
+
 [input]
 
 ui_accept={

@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://csnrtywni614f"]
+
+[ext_resource type="FontFile" uid="uid://53ssaml16qni" path="res://fonts/raster_forge_font.ttf" id="1_agim1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7r4gi"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0.054902, 0.384314, 0.45098, 1)
+border_width_bottom = 5
+border_color = Color(0.0470588, 0.270588, 0.34902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4mrxx"]
+content_margin_left = 10.0
+content_margin_right = 10.0
+bg_color = Color(0, 0.427451, 0.45098, 1)
+border_width_bottom = 5
+border_color = Color(0.0470588, 0.270588, 0.34902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3hyu"]
+content_margin_left = 5.0
+content_margin_right = 5.0
+bg_color = Color(0, 0.427451, 0.45098, 1)
+
+[resource]
+Button/fonts/font = ExtResource("1_agim1")
+Button/styles/hover = SubResource("StyleBoxFlat_7r4gi")
+Button/styles/normal = SubResource("StyleBoxFlat_4mrxx")
+Button/styles/pressed = SubResource("StyleBoxFlat_e3hyu")

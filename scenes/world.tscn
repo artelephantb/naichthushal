@@ -84,6 +84,7 @@ use_native_dialog = true
 
 [node name="SaveMapPopup" parent="." instance=ExtResource("2_4mrxx")]
 title = "Save Map"
+position = Vector2i(0, 36)
 force_native = true
 
 [node name="SaveMapPopupA" type="Popup" parent="."]
@@ -204,27 +205,22 @@ offset_bottom = 633.0
 
 [node name="Flight" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("5_4mrxx")
 text = "Toggle Flight"
 
 [node name="Instabreak" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("5_4mrxx")
 text = "Instabreak"
 
 [node name="Export" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("5_4mrxx")
 text = "Export"
 
 [node name="Import" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("5_4mrxx")
 text = "Import World"
 
 [node name="OpenMaps" type="Button" parent="CanvasLayer/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("5_4mrxx")
 text = "Open Maps Folder"
 
 [node name="Info" type="Label" parent="CanvasLayer"]
@@ -232,7 +228,7 @@ offset_left = 710.0
 offset_top = 614.0
 offset_right = 1141.0
 offset_bottom = 637.0
-text = "BUILD 6.9.25"
+text = "BUILD 15.9.25"
 label_settings = SubResource("LabelSettings_7r4gi")
 horizontal_alignment = 2
 
