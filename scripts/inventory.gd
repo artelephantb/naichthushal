@@ -9,7 +9,7 @@ func create_slots(slots: Array[int]):
 	for slot_index in range(len(slots)):
 		var new_slot = Button.new()
 		new_slot.pressed.connect(_slot_pressed.bind(slot_index))
-		new_slot.text = str(slot_index) + ' with block ' + str(slots[slot_index])
+		new_slot.text = str(slots[slot_index])
 
 		add_child(new_slot)
 
